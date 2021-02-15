@@ -3,21 +3,23 @@
     https://api-shoushou.shenmayouxi.com/  
 
 -----
+
 ## 说明
 初次写接口文档，格式不好请见谅。  
   
 本接口为根接口。  
 支付逻辑方面未知。  
 具体用法请参考以下文件：  
+  
 [BootStrapper](bootstrapper.md)  
 - 启动验证接口
   - *--没有次级接口--*
 
 [Good](good.md)  
-- 消息推送接口
+- 点赞相关接口
   - unread / 获取未读消息数目(小红点)
-  - received / "我赞的毛毛"
-  - medo / "赞我的毛毛"
+  - received / "赞我的毛毛"
+  - medo / "我赞的毛毛"
   - doo / "毛毛之家"点赞
 
 [Account](account.md)  
@@ -35,9 +37,10 @@
   - renew / "续费捏兽"? 疑似存在，未捕捉到
   - remove / "移除捏兽"? 疑似存在，未捕捉到
 
+-----
 
 ## Headers
-在绝大多数请求中，都需要携带此Headers
+这是应用内发出HTTPS时使用的Headers，测试后发现某些情况下也可不使用这个Headers  
 ```
 Host: api-shoushou.shenmayouxi.com
 Content-Type: application/x-www-form-urlencoded
@@ -48,13 +51,15 @@ Accept-Encoding: gzip, deflate, br
 X-Unity-Version: 2019.3.13f1
 ```
 
+-----
+
 ## token相关
-该接口的绝大多数次级接口都是需要带token访问的。  
-token可以在用户验证接口处获得
+本应用的绝大多数次级接口都是需要带token访问的。  
+token可以在**用户验证接口**处获得  
 token形式上为base64字符串(此处为例子)  
-'''
+```
 eyJpZCI6MCwiYXBwIjoic2hvdXNob3UiLCJ0aW1lIjowfQ==
-'''
+```
 解密后为json字符串  
 为去除了多余空格和换行符等内容的格式  
 ```json

@@ -3,14 +3,15 @@
     https://api-shoushou.shenmayouxi.com/bootstrapper  
 
 -----
+
 ## 说明
-本接口会在应用启动时带参数访问一次。  
-(推测)本接口用于刷新当前记录的令牌是否有效，并获取用户基本信息。  
+本接口会在应用启动时带token访问一次。  
+(推测)本接口用于刷新当前记录的令牌，并获取用户基本信息。  
 
 ## 请求
 请求方式: *POST*  
-*必须携带Headers*  
-请求参数:  
+*可选携带Headers*  
+请求参数(body):  
 | Key | Type | Description |
 | --- | ---- | ----------- |
 | token | base64/str | 令牌 |
@@ -21,16 +22,16 @@
 | --- | ---- | ----------- |
 | code | int/str | 状态码 |
 | msg | str | 状态码对应的具体内容 |
-| data | dict | -- |
+| data | dict | (视情况可能没有data键) |
 
 ### data中的内容
 
 | Key | Type | Description |
 | --- | ---- | ----------- |
 | defaultName | str | 默认昵称 |
-| defaultIcon | str | (推测)默认头像 |
+| defaultIcon | str | 默认头像 |
 | version | str | 版本号 |
-| versionNumber| int/str | 版本号对应的编号 |
+| versionNumber | int/str | 版本号对应的编号 |
 
 ```json
 {

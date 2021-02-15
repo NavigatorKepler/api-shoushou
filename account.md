@@ -1,10 +1,15 @@
 # API地址
 
-    https://api-shoushou.shenmayouxi.com/account  
+    https://api-shoushou.shenmayouxi.com/account/  
+
+## 说明
+本接口为用户登录相关的接口, 已经明确的次级接口有
+- smscaptcha / 短信发送接口
+- smsloginregister / 用户验证接口
+
+本应用没有真正意义的退出登录, 退出登录只是删除存储在本机上的token  
 
 -----
-## 说明
-本接口下设smscaptcha和smsloginregister两个次级接口  
 
 # smscaptcha / 短信发送接口
 
@@ -13,12 +18,13 @@
     https://api-shoushou.shenmayouxi.com/account/smscaptcha
 
 ## 说明
-本次级接口用于申请向手机号发送短信  
+本次级接口用于申请向手机号发送短信, 左上角用户登录时点击发送短信会调用1次。  
+服务器端设置了60秒的时间限制, 即60秒内对同一手机号只能发送一次短信。  
 
 ## 请求
 请求方式: *POST*  
-*必须携带Headers*  
-请求参数:  
+*可选携带Headers*  
+请求参数(body):  
 | Key | Type | Description |
 | --- | ---- | ----------- |
 | phone | int | 手机号 |
@@ -28,7 +34,7 @@
 | --- | ---- | ----------- |
 | code | str | 状态码 |
 | msg | str | 状态码对应的具体内容 |
-| data | dict | -- |
+| data | dict | (视情况可能没有data键) |
 
 ```json
 {
@@ -38,6 +44,8 @@
 }
 ```
 
+-----
+
 # smsloginregister / 用户验证接口
 
 ## 次级接口地址
@@ -45,12 +53,13 @@
     https://api-shoushou.shenmayouxi.com/account/smsloginregister
 
 ## 说明
-本次级接口用于将手机号收到的验证码上传到服务器进行验证，并获取用户数据。  
+本次级接口用于将手机号收到的验证码上传到服务器进行验证，验证成功后返回用户数据。  
+手机的验证码有效期为5分钟。  
 
 ## 请求
 请求方式: *POST*  
-*必须携带Headers*  
-请求参数:  
+*可选携带Headers*  
+请求参数(body):  
 | Key | Type | Description |
 | --- | ---- | ----------- |
 | phone | int/str | 手机号 |
@@ -61,7 +70,7 @@
 | --- | ---- | ----------- |
 | code | str | 状态码 |
 | msg | str | 状态码对应的具体内容 |
-| data | dict | -- |
+| data | dict | (视情况可能没有data键) |
 
 ### data中的内容
 
@@ -69,9 +78,9 @@
 | --- | ---- | ----------- |
 | id | int/str | 用户id |
 | name | str | 用户昵称 |
-| bgColor | str | (字面意义)界面背景色 |
+| bgColor | str | (推测)不知用于何处的背景颜色 |
 | roomId | int/str | 房间背景图 |
-| icon | str | (不知用于何处的)图标 |
+| icon | str | (推测)设定图 |
 | token | base64/str | 令牌 |
 
 ```json
