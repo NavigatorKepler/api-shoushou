@@ -4,6 +4,8 @@
 
 -----
 ## 说明
+初次写接口文档，格式不好请见谅。  
+  
 本接口为根接口。  
 支付逻辑方面未知。  
 具体用法请参考以下文件：  
@@ -29,6 +31,9 @@
   - nameCheck / 设定名称查重
   - my / 我的设定(仅服务器端/"已保护")
   - room / "毛毛之家"
+  - new / "上传捏兽"? 疑似存在，未捕捉到
+  - renew / "续费捏兽"? 疑似存在，未捕捉到
+  - remove / "移除捏兽"? 疑似存在，未捕捉到
 
 
 ## Headers
@@ -45,6 +50,7 @@ X-Unity-Version: 2019.3.13f1
 
 ## token相关
 该接口的绝大多数次级接口都是需要带token访问的。  
+token可以在用户验证接口处获得
 token形式上为base64字符串(此处为例子)  
 '''
 eyJpZCI6MCwiYXBwIjoic2hvdXNob3UiLCJ0aW1lIjowfQ==
