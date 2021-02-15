@@ -16,7 +16,7 @@
 本次级接口用于申请向手机号发送短信  
 
 ## 请求
-请求方式: POST  
+请求方式: *POST*  
 *必须携带Headers*  
 请求参数:  
 | Key | Type | Description |
