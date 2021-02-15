@@ -7,7 +7,9 @@
 - (通用)登陆状态过期
 
 ## 400
--
+- (accounts/smscaptcha)短信发送错误~
+- (accounts/smscaptcha)两次发送间隔小于60秒
+- (accounts/smscaptcha)手机号码填写错误
 
 ## 403
 - (fursona/new)请求不被允许哦~
