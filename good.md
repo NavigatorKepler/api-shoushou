@@ -184,7 +184,7 @@
 | expireDate | YYYY-MM-DD/str | (推测)"设定保护"到期时间 |
 | isLocking | int/str | 指示是否正在保护(一般来说, 能看到的都是正在保护的) |
 | iconBig | str | 生成的设定图片(大图) |
-| created | int | 点赞时间戳 |
+| created | int/str | 点赞时间戳 |
 
 ```json
 {
